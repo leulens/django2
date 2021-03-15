@@ -1,367 +1,250 @@
+/*  ---------------------------------------------------
+    Template Name: Fashi
+    Description: Fashi eCommerce HTML Template
+    Author: Colorlib
+    Author URI: https://colorlib.com/
+    Version: 1.0
+    Created: Colorlib
+---------------------------------------------------------  */
+
+'use strict';
+
 (function ($) {
-"use strict";
-// TOP Menu Sticky
-$(window).on('scroll', function () {
-	var scroll = $(window).scrollTop();
-	if (scroll < 400) {
-    $("#sticky-header").removeClass("sticky");
-    $('#back-top').fadeIn(500);
-	} else {
-    $("#sticky-header").addClass("sticky");
-    $('#back-top').fadeIn(500);
-	}
-});
 
+    /*------------------
+        Preloader
+    --------------------*/
+    $(window).on('load', function () {
+        $(".loader").fadeOut();
+        $("#preloder").delay(200).fadeOut("slow");
+    });
 
-$(document).ready(function(){
+    /*------------------
+        Background Set
+    --------------------*/
+    $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+    });
 
-// mobile_menu
-var menu = $('ul#navigation');
-if(menu.length){
-	menu.slicknav({
-		prependTo: ".mobile_menu",
-		closedSymbol: '+',
-		openedSymbol:'-'
-	});
-};
-// blog-menu
-  // $('ul#blog-menu').slicknav({
-  //   prependTo: ".blog_menu"
-  // });
+    /*------------------
+		Navigation
+	--------------------*/
+    $(".mobile-menu").slicknav({
+        prependTo: '#mobile-menu-wrap',
+        allowParentLinks: true
+    });
 
-// review-active
-$('.gallery_active').owlCarousel({
-  loop:true,
-  margin:30,
-items:1,
-autoplay:true,
-navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
-  nav:true,
-dots:false,
-autoplayHoverPause: true,
-autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false,
-      },
-      767:{
-          items:2,
-          nav:true,
-      },
-      992:{
-          items:3
-      }
-  }
-});
+    /*------------------
+        Hero Slider
+    --------------------*/
+    $(".hero-items").owlCarousel({
+        loop: true,
+        margin: 0,
+        nav: true,
+        items: 1,
+        dots: false,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+    });
 
-// about_active
-$('.about_active').owlCarousel({
-  loop:true,
-  margin:0,
-  items:1,
-  autoplay:true,
-  navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
-  nav:true,
-  dots:false,
-  autoplayHoverPause: true,
-  autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false,
-      },
-      767:{
-          items:1,
-          nav:false,
-      },
-      992:{
-          items:1
-      }
-  }
-});
+    /*------------------
+        Product Slider
+    --------------------*/
+   $(".product-slider").owlCarousel({
+        loop: true,
+        margin: 25,
+        nav: true,
+        items: 4,
+        dots: true,
+        navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            576: {
+                items: 2,
+            },
+            992: {
+                items: 2,
+            },
+            1200: {
+                items: 3,
+            }
+        }
+    });
 
-// review-active
-$('.testmonial_active').owlCarousel({
-  loop:true,
-  margin:0,
-items:1,
-autoplay:true,
-navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-  nav:true,
-dots:false,
-autoplayHoverPause: true,
-autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          dots:false,
-          nav:false,
-      },
-      767:{
-          items:1,
-          dots:false,
-          nav:false,
-      },
-      992:{
-          items:1,
-          nav:false
-      },
-      1200:{
-          items:1,
-          nav:false
-      },
-      1500:{
-          items:1
-      }
-  }
-});
+    /*------------------
+       logo Carousel
+    --------------------*/
+    $(".logo-carousel").owlCarousel({
+        loop: false,
+        margin: 30,
+        nav: false,
+        items: 5,
+        dots: false,
+        navText: ['<i class="ti-angle-left"></i>', '<i class="ti-angle-right"></i>'],
+        smartSpeed: 1200,
+        autoHeight: false,
+        mouseDrag: false,
+        autoplay: true,
+        responsive: {
+            0: {
+                items: 3,
+            },
+            768: {
+                items: 5,
+            }
+        }
+    });
 
-// for filter
-  // init Isotope
-  var $grid = $('.grid').isotope({
-    itemSelector: '.grid-item',
-    percentPosition: true,
-    masonry: {
-      // use outer width of grid-sizer for columnWidth
-      columnWidth: 1
+    /*-----------------------
+       Product Single Slider
+    -------------------------*/
+    $(".ps-slider").owlCarousel({
+        loop: false,
+        margin: 10,
+        nav: true,
+        items: 3,
+        dots: false,
+        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+    });
+    
+    /*------------------
+        CountDown
+    --------------------*/
+    // For demo preview
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(mm == 12) {
+        mm = '01';
+        yyyy = yyyy + 1;
+    } else {
+        mm = parseInt(mm) + 1;
+        mm = String(mm).padStart(2, '0');
     }
-  });
+    var timerdate = mm + '/' + dd + '/' + yyyy;
+    // For demo preview end
 
-  // filter items on button click
-  $('.portfolio-menu').on('click', 'button', function () {
-    var filterValue = $(this).attr('data-filter');
-    $grid.isotope({ filter: filterValue });
-  });
+    console.log(timerdate);
+    
 
-  //for menu active class
-  $('.portfolio-menu button').on('click', function (event) {
-    $(this).siblings('.active').removeClass('active');
-    $(this).addClass('active');
-    event.preventDefault();
-	});
-  
-  // wow js
-  new WOW().init();
+    // Use this for real timer date
+    /* var timerdate = "2020/01/01"; */
 
-  // counter 
-  $('.counter').counterUp({
-    delay: 10,
-    time: 10000
-  });
+	$("#countdown").countdown(timerdate, function(event) {
+        $(this).html(event.strftime("<div class='cd-item'><span>%D</span> <p>Days</p> </div>" + "<div class='cd-item'><span>%H</span> <p>Hrs</p> </div>" + "<div class='cd-item'><span>%M</span> <p>Mins</p> </div>" + "<div class='cd-item'><span>%S</span> <p>Secs</p> </div>"));
+    });
 
-/* magnificPopup img view */
-$('.popup-image').magnificPopup({
-	type: 'image',
-	gallery: {
-	  enabled: true
-	}
-});
+        
+    /*----------------------------------------------------
+     Language Flag js 
+    ----------------------------------------------------*/
+    $(document).ready(function(e) {
+    //no use
+    try {
+        var pages = $("#pages").msDropdown({on:{change:function(data, ui) {
+            var val = data.value;
+            if(val!="")
+                window.location = val;
+        }}}).data("dd");
 
-/* magnificPopup img view */
-$('.img-pop-up').magnificPopup({
-	type: 'image',
-	gallery: {
-	  enabled: true
-	}
-});
+        var pagename = document.location.pathname.toString();
+        pagename = pagename.split("/");
+        pages.setIndexByValue(pagename[pagename.length-1]);
+        $("#ver").html(msBeautify.version.msDropdown);
+    } catch(e) {
+        // console.log(e);
+    }
+    $("#ver").html(msBeautify.version.msDropdown);
 
-/* magnificPopup video view */
-$('.popup-video').magnificPopup({
-	type: 'iframe'
-});
-
-
-  // scrollIt for smoth scroll
-  $.scrollIt({
-    upKey: 38,             // key code to navigate to the next section
-    downKey: 40,           // key code to navigate to the previous section
-    easing: 'linear',      // the easing function for animation
-    scrollTime: 600,       // how long (in ms) the animation takes
-    activeClass: 'active', // class given to the active nav element
-    onPageChange: null,    // function(pageIndex) that is called when page is changed
-    topOffset: 0           // offste (in px) for fixed top navigation
-  });
-
-  // scrollup bottom to top
-  $.scrollUp({
-    scrollName: 'scrollUp', // Element ID
-    topDistance: '4500', // Distance from top before showing element (px)
-    topSpeed: 300, // Speed back to top (ms)
-    animation: 'fade', // Fade, slide, none
-    animationInSpeed: 200, // Animation in speed (ms)
-    animationOutSpeed: 200, // Animation out speed (ms)
-    scrollText: '<i class="fa fa-angle-double-up"></i>', // Text for element
-    activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-  });
-
-
-  // blog-page
-
-  //brand-active
-$('.brand-active').owlCarousel({
-  loop:true,
-  margin:30,
-items:1,
-autoplay:true,
-  nav:false,
-dots:false,
-autoplayHoverPause: true,
-autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
-
-      },
-      767:{
-          items:4
-      },
-      992:{
-          items:7
-      }
-  }
-});
-
-// blog-dtails-page
-
-  //project-active
-$('.project-active').owlCarousel({
-  loop:true,
-  margin:30,
-items:1,
-// autoplay:true,
-navText:['<i class="Flaticon flaticon-left-arrow"></i>','<i class="Flaticon flaticon-right-arrow"></i>'],
-nav:true,
-dots:false,
-// autoplayHoverPause: true,
-// autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
-
-      },
-      767:{
-          items:1,
-          nav:false
-      },
-      992:{
-          items:2,
-          nav:false
-      },
-      1200:{
-          items:1,
-      },
-      1501:{
-          items:2,
-      }
-  }
-});
-
-if (document.getElementById('default-select')) {
-  $('select').niceSelect();
-}
-
-  //about-pro-active
-$('.details_active').owlCarousel({
-  loop:true,
-  margin:0,
-items:1,
-// autoplay:true,
-navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
-nav:true,
-dots:false,
-// autoplayHoverPause: true,
-// autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
-
-      },
-      767:{
-          items:1,
-          nav:false
-      },
-      992:{
-          items:1,
-          nav:false
-      },
-      1200:{
-          items:1,
-      }
-  }
-});
-
-});
-
-// resitration_Form
-$(document).ready(function() {
-	$('.popup-with-form').magnificPopup({
-		type: 'inline',
-		preloader: false,
-		focus: '#name',
-
-		// When elemened is focused, some mobile browsers in some cases zoom in
-		// It looks not nice, so we disable it:
-		callbacks: {
-			beforeOpen: function() {
-				if($(window).width() < 700) {
-					this.st.focus = false;
-				} else {
-					this.st.focus = '#name';
-				}
-			}
+    //convert
+    $(".language_drop").msDropdown({roundedBorder:false});
+        $("#tech").data("dd");
+    });
+    /*-------------------
+		Range Slider
+	--------------------- */
+	var rangeSlider = $(".price-range"),
+		minamount = $("#minamount"),
+		maxamount = $("#maxamount"),
+		minPrice = rangeSlider.data('min'),
+		maxPrice = rangeSlider.data('max');
+	    rangeSlider.slider({
+		range: true,
+		min: minPrice,
+        max: maxPrice,
+		values: [minPrice, maxPrice],
+		slide: function (event, ui) {
+			minamount.val('$' + ui.values[0]);
+			maxamount.val('$' + ui.values[1]);
 		}
 	});
-});
+	minamount.val('$' + rangeSlider.slider("values", 0));
+    maxamount.val('$' + rangeSlider.slider("values", 1));
 
-// resitration_Form
-$(document).ready(function() {
-	$('.dont-hav-acc').magnificPopup({
-		type: 'inline',
-		preloader: false,
-		focus: '#name',
+    /*-------------------
+		Radio Btn
+	--------------------- */
+    $(".fw-size-choose .sc-item label, .pd-size-choose .sc-item label").on('click', function () {
+        $(".fw-size-choose .sc-item label, .pd-size-choose .sc-item label").removeClass('active');
+        $(this).addClass('active');
+    });
+    
+    /*-------------------
+		Nice Select
+    --------------------- */
+    $('.sorting, .p-show').niceSelect();
 
-		// When elemened is focused, some mobile browsers in some cases zoom in
-		// It looks not nice, so we disable it:
-		callbacks: {
-			beforeOpen: function() {
-				if($(window).width() < 700) {
-					this.st.focus = false;
-				} else {
-					this.st.focus = '#name';
-				}
-			}
+    /*------------------
+		Single Product
+	--------------------*/
+	$('.product-thumbs-track .pt').on('click', function(){
+		$('.product-thumbs-track .pt').removeClass('active');
+		$(this).addClass('active');
+		var imgurl = $(this).data('imgbigurl');
+		var bigImg = $('.product-big-img').attr('src');
+		if(imgurl != bigImg) {
+			$('.product-big-img').attr({src: imgurl});
+			$('.zoomImg').attr({src: imgurl});
 		}
 	});
-});
 
+    $('.product-pic-zoom').zoom();
+    
+    /*-------------------
+		Quantity change
+	--------------------- */
+    var proQty = $('.pro-qty');
+	proQty.prepend('<span class="dec qtybtn">-</span>');
+	proQty.append('<span class="inc qtybtn">+</span>');
+	proQty.on('click', '.qtybtn', function () {
+		var $button = $(this);
+		var oldValue = $button.parent().find('input').val();
+		if ($button.hasClass('inc')) {
+			var newVal = parseFloat(oldValue) + 1;
+		} else {
+			// Don't allow decrementing below zero
+			if (oldValue > 0) {
+				var newVal = parseFloat(oldValue) - 1;
+			} else {
+				newVal = 0;
+			}
+		}
+		$button.parent().find('input').val(newVal);
+	});
 
-
-//------- Mailchimp js --------//  
-function mailChimp() {
-  $('#mc_embed_signup').find('form').ajaxChimp();
-}
-mailChimp();
-
-
-
-        // Search Toggle
-        $("#search_input_box").hide();
-        $("#search").on("click", function () {
-            $("#search_input_box").slideToggle();
-            $("#search_input").focus();
-        });
-        $("#close_search").on("click", function () {
-            $('#search_input_box').slideUp(500);
-        });
-        // Search Toggle
-        $("#search_input_box").hide();
-        $("#search_1").on("click", function () {
-            $("#search_input_box").slideToggle();
-            $("#search_input").focus();
-        });
-
-})(jQuery);	
+})(jQuery);
