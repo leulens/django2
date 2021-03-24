@@ -21,18 +21,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from polls.views import index, detail
 from news import views
 
 urlpatterns = [
-    # path('polls/', include('polls.urls')),
-    path('', index),
-    path('polls/<int:question_id>/', detail),
+    path('', views.index_hendler),
     path('blog/', views.blog_hendler),
     path('contact/', views.contact_hendler),
     path('faq/', views.faq_hendler),
     path('blog-details/', views.blog_details_hendler),
-    path('index/', views.index_hendler),
 
     path('robots.txt', views.robots_hendler),
 
