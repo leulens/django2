@@ -1,6 +1,8 @@
-{% include 'news/partials/header.html' %}
+{% extends 'news/base.html' %}
 
-{% include 'news/partials/breadcrumb.html' %}
+{% block  content %}
+
+{% load static %}
 
 <!-- Blog Section Begin -->
 <section class="blog-section spad">
@@ -16,12 +18,12 @@
                         </form>
                     </div>
                     <div class="blog-catagory">
+
                         <h4>Categories</h4>
                         <ul>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Picnic</a></li>
-                            <li><a href="#">Model</a></li>
+                             {% for cat in menu_categories %}
+                            <li><a href="{% url 'category' cat.slug %}">{{ cat.name }}</a></li>
+                             {% endfor %}
                         </ul>
                     </div>
                     <div class="recent-post">
@@ -29,7 +31,7 @@
                         <div class="recent-blog">
                             <a href="#" class="rb-item">
                                 <div class="rb-pic">
-                                    <img src="/static/img/blog/recent-1.jpg" alt="">
+                                    <img src="{% static 'img/blog/recent-1.jpg' %}" alt="">
                                 </div>
                                 <div class="rb-text">
                                     <h6>The Personality Trait That Makes...</h6>
@@ -38,7 +40,7 @@
                             </a>
                             <a href="#" class="rb-item">
                                 <div class="rb-pic">
-                                    <img src="/static/img/blog/recent-2.jpg" alt="">
+                                    <img src="{% static 'img/blog/recent-2.jpg' %}" alt="">
                                 </div>
                                 <div class="rb-text">
                                     <h6>The Personality Trait That Makes...</h6>
@@ -47,7 +49,7 @@
                             </a>
                             <a href="#" class="rb-item">
                                 <div class="rb-pic">
-                                    <img src="/static/img/blog/recent-3.jpg" alt="">
+                                    <img src="{% static 'img/blog/recent-3.jpg' %}" alt="">
                                 </div>
                                 <div class="rb-text">
                                     <h6>The Personality Trait That Makes...</h6>
@@ -56,110 +58,40 @@
                             </a>
                             <a href="#" class="rb-item">
                                 <div class="rb-pic">
-                                    <img src="/static/img/blog/recent-4.jpg" alt="">
+                                    <img src="{% static 'img/blog/recent-4.jpg' %}" alt="">
                                 </div>
                                 <div class="rb-text">
                                     <h6>The Personality Trait That Makes...</h6>
                                     <p>Fashion <span>- May 19, 2019</span></p>
                                 </div>
                             </a>
-                        </div>
-                    </div>
-                    <div class="blog-tags">
-                        <h4>Product Tags</h4>
-                        <div class="tag-item">
-                            <a href="#">Towel</a>
-                            <a href="#">Shoes</a>
-                            <a href="#">Coat</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Trousers</a>
-                            <a href="#">Men's hats</a>
-                            <a href="#">Backpack</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="row">
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="blog-item">
-                            <div class="bi-pic">
-                                <img src="/static/img/blog/blog-3.jpg" alt="">
-                            </div>
-                            <div class="bi-text">
-                                <a href="/blog-details/">
-                                    <h4>Last week I had my first work trip of the year to Sonoma Valley</h4>
-                                </a>
-                                <p>travel <span>- May 19, 2019</span></p>
-                            </div>
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>Blog</h2>
                         </div>
                     </div>
+                    {% for article in last_articles %}
                     <div class="col-lg-6 col-sm-6">
                         <div class="blog-item">
                             <div class="bi-pic">
-                                <img src="/static/img/blog/blog-1.jpg" alt="">
+                                <img src="{{ article.main_image.url }}" alt="">
                             </div>
                             <div class="bi-text">
-                                <a href="./blog-details.html">
-                                    <h4>The Personality Trait That Makes People Happier</h4>
+                                <a href="{% url 'page' article.slug %}">
+                                    <h4>{{ article.name }}</h4>
                                 </a>
-                                <p>travel <span>- May 19, 2019</span></p>
+                                <p>{{ article.categories.all.0 }} <span>- {{ article.pub_date }}</span></p>
                             </div>
                         </div>
                     </div>
-                     <div class="col-lg-6 col-sm-6">
-                        <div class="blog-item">
-                            <div class="bi-pic">
-                                <img src="/static/img/blog/blog-3.jpg" alt="">
-                            </div>
-                            <div class="bi-text">
-                                <a href="/blog-details/">
-                                    <h4>Last week I had my first work trip of the year to Sonoma Valley</h4>
-                                </a>
-                                <p>travel <span>- May 19, 2019</span></p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="blog-item">
-                            <div class="bi-pic">
-                                <img src="/static/img/blog/blog-4.jpg" alt="">
-                            </div>
-                            <div class="bi-text">
-                                <a href="./blog-details.html">
-                                    <h4>Happppppy New Year! I know I am a little late on this post</h4>
-                                </a>
-                                <p>Fashion <span>- May 19, 2019</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="blog-item">
-                            <div class="bi-pic">
-                                <img src="/static/img/blog/blog-5.jpg" alt="">
-                            </div>
-                            <div class="bi-text">
-                                <a href="./blog-details.html">
-                                    <h4>Absolue collection. The Lancome team has been one…</h4>
-                                </a>
-                                <p>Model <span>- May 19, 2019</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="blog-item">
-                            <div class="bi-pic">
-                                <img src="/static/img/blog/blog-6.jpg" alt="">
-                            </div>
-                            <div class="bi-text">
-                                <a href="./blog-details.html">
-                                    <h4>Writing has always been kind of therapeutic for me</h4>
-                                </a>
-                                <p>Fashion <span>- May 19, 2019</span></p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-lg-12">
                         <div class="loading-more">
                             <i class="icon_loading"></i>
@@ -175,38 +107,4 @@
 </section>
 <!-- Blog Section End -->
 
-<!-- Partner Logo Section Begin -->
-<div class="partner-logo">
-    <div class="container">
-        <div class="logo-carousel owl-carousel">
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="/static/img/logo-carousel/logo-1.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="/static/img/logo-carousel/logo-2.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="/static/img/logo-carousel/logo-3.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="/static/img/logo-carousel/logo-4.png" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="/static/img/logo-carousel/logo-5.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Partner Logo Section End -->
-
-{% include 'news/partials/footer.html' %}
+{% endblock %}

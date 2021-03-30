@@ -1,6 +1,6 @@
 from django.db import models
+from string import punctuation
 
-# Создание классов
 class Category(models.Model):
     name = models.CharField(max_length=255, db_index = True)
     slug = models.SlugField(max_length=255, unique=True)
@@ -31,6 +31,7 @@ class Article(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     content = models.TextField()
+    content_words_count = models.IntegerField(null=True, blank=True)
     short_description = models.TextField()
     main_image = models.ImageField(upload_to='images')
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -42,6 +43,13 @@ class Article(models.Model):
     def __str__(self):
         return self.name
 
+    def count_unique_words(self):
+            text = self.content.replace('<p>', '').replace('</p>', '')
+            for symbol in punctuation:
+                text = text.replace(symbol, '')
+            words = text.split()
+            return len(set(words))
+
 
 class Comment(models.Model):
     name = models.CharField(max_length=100)
@@ -51,7 +59,7 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.comment[:20] #выводим первые 20 символов комментария
+        return self.comment[:20]
 
 
 class Newsletter(models.Model):
@@ -61,7 +69,7 @@ class Newsletter(models.Model):
     unsubscribe_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.email #выводим email
+        return self.email
 
 
 class Tag(models.Model):
