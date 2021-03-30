@@ -2,6 +2,7 @@
 
 {% block  content %}
 
+{% load static %}
 <!-- Blog Details Section Begin -->
 <section class="blog-details spad">
     <div class="container">
@@ -9,54 +10,22 @@
             <div class="col-lg-12">
                 <div class="blog-details-inner">
                     <div class="blog-detail-title">
-                        <h2>The Personality Trait That Makes People Happier</h2>
-                        <p>travel <span>- May 19, 2019</span></p>
+                        <h2>{{article.name}}</h2>
+                        <p>{{ article.categories.all.0 }} <span>- {{ article.pub_date }}</span></p>
                     </div>
                     <div class="blog-large-pic">
-                        <img src="/static/img/blog/blog-detail.jpg" alt="">
+                        <img src="{{ article.main_image.url }}" alt="">
                     </div>
                     <div class="blog-detail-desc">
-                        <p>psum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit
-                            amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
-                        </p>
+                    <div>{{ article.content | safe}}
                     </div>
-                    <div class="blog-quote">
-                        <p>“ Technology is nothing. What's important is that you have a faith in people, that
-                            they're basically good and smart, and if you give them tools, they'll do wonderful
-                            things with them.” <span>- Steven Jobs</span></p>
-                    </div>
-                    <div class="blog-more">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <img src="/static/img/blog/blog-detail-1.jpg" alt="">
-                            </div>
-                            <div class="col-sm-4">
-                                <img src="/static/img/blog/blog-detail-2.jpg" alt="">
-                            </div>
-                            <div class="col-sm-4">
-                                <img src="/static/img/blog/blog-detail-3.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <p>Sum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
-
-
                     <div class="tag-share">
                         <div class="details-tag">
                             <ul>
                                 <li><i class="fa fa-tags"></i></li>
-                                <li>Travel</li>
-                                <li>Beauty</li>
-                                <li>Fashion</li>
+                                {% for cat in article.categories.all %}
+                            <li><a href="{% url 'category' cat.slug %}">{{ cat.name }}</a></li>
+                             {% endfor %}
                             </ul>
                         </div>
                         <div class="blog-share">
@@ -72,45 +41,62 @@
                     </div>
                     <div class="blog-post">
                         <div class="row">
+                            {% if prev_article %}
                             <div class="col-lg-5 col-md-6">
-                                <a href="#" class="prev-blog">
+                                 <a href="{{prev_article.slug}}" class="prev-blog">
                                     <div class="pb-pic">
                                         <i class="ti-arrow-left"></i>
-                                        <img src="/static/img/blog/prev-blog.png" alt="">
+                                        <img src="{{prev_article.main_image.url}}" alt="">
                                     </div>
                                     <div class="pb-text">
                                         <span>Previous Post:</span>
-                                        <h5>The Personality Trait That Makes People Happier</h5>
+                                        <h5>{{prev_article.name | title}}</h5>
                                     </div>
                                 </a>
                             </div>
+                            {% endif %}
+                            {% if next_article %}
                             <div class="col-lg-5 offset-lg-2 col-md-6">
-                                <a href="#" class="next-blog">
+                                <a href="{{next_article.slug}}" class="next-blog">
                                     <div class="nb-pic">
-                                        <img src="/static/img/blog/next-blog.png" alt="">
+                                        <img src="{{next_article.main_image.url}}" alt="">
                                         <i class="ti-arrow-right"></i>
                                     </div>
                                     <div class="nb-text">
                                         <span>Next Post:</span>
-                                        <h5>The Personality Trait That Makes People Happier</h5>
+                                        <h5>{{next_article.name | title}}</h5>
                                     </div>
                                 </a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="posted-by">
                         <div class="pb-pic">
-                            <img src="/static/img/blog/post-by.png" alt="">
+                            <img src="{{ article.author.avatar.url }}" width="90" alt="{{ article.author.name | title }}">
                         </div>
                         <div class="pb-text">
-                            <a href="#">
-                                <h5>Shane Lynch</h5>
-                            </a>
-                            <p>Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                amodo</p>
+                            <span>
+                                <h5>{{ article.author.name | title }}</h5>
+                            </span>
+                            <p>{{ article.author.bio }}</p>
                         </div>
                     </div>
+
+                    <h4>{{ article.comments.all.count }} Comments</h4>
+
+                    {% for comment in article.comments.all %}
+                    <div class="posted-by">
+                        <div class="pb-text">
+                            <span>
+                                <h5>{{ comment.name }} - {{ comment.pub_date }}</h5>
+                            </span>
+                            <p>{{ comment.comment }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
                     <div class="leave-comment">
                         <h4>Leave A Comment</h4>
                         <form action="#" class="comment-form">

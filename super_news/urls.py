@@ -23,12 +23,15 @@ from django.conf.urls.static import static
 
 from news import views
 
+
 urlpatterns = [
-    path('', views.index_hendler),
-    path('blog/', views.blog_hendler),
-    path('contact/', views.contact_hendler),
-    path('faq/', views.faq_hendler),
-    path('blog-details/', views.blog_details_hendler),
+    path('', views.index_hendler, name='homepage'),
+    path('blog/', views.blog_hendler, name='blog'),
+    path('<cat_slug>', views.blog_hendler, name='category'),
+    path('post/<post_slug>', views.blog_details_hendler, name='page'),
+
+    path('contact/', views.contact_hendler, name='contact'),
+    path('faq/', views.faq_hendler, name='faq'),
 
     path('robots.txt', views.robots_hendler),
 

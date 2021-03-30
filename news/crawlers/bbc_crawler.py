@@ -7,8 +7,10 @@ from concurrent.futures import ThreadPoolExecutor
 
 from news.models import Article, Author, Category
 
-
-author = Author.objects.get(id=3)
+try:
+    author = Author.objects.get(id=3)
+except:
+    print('Создайте сначала автора, а потом запускайте парсер!')
 
 def crawl_one(url):
 
@@ -18,13 +20,13 @@ def crawl_one(url):
     name = response.html.xpath('//h1')[0].text
     content = response.html.xpath('//article//p')
     image_url = response.html.xpath('//figure//img/@src')[0]
-    pub_date = response.html.xpath('//time/@datetime') #значение атрибута
+    pub_date = response.html.xpath('//time/@datetime')
     cats = response.html.xpath('//article//div[@class="ssrcss-1emjddl-Cluster e1ihwmse0"]//ul//li')
 
 
     my_content = ''
     short_description = ''
-    # breakpoint()
+
     for element in content:
         my_content += f'<{element.tag}>' + element.text + f'<{element.tag}>'
         if len(short_description) < 200:
@@ -40,7 +42,7 @@ def crawl_one(url):
             response = session.get(image_url)
             f.write(response.content)
 
-    pub_date = datetime.strptime(pub_date[0][0:10], '%Y-%m-%d') #преобразуем строку в дату
+    pub_date = datetime.strptime(pub_date[0][0:10], '%Y-%m-%d')
 
     categories = []
 
@@ -95,9 +97,6 @@ def get_fresh_news():
 
 def run():
 
-    #Article.objects.all().delete() #удаление всех статей из БД
-
     fresh_news = get_fresh_news()
     with ThreadPoolExecutor(max_workers=10) as executor:
         executor.map(crawl_one, fresh_news)
-

@@ -6,10 +6,5 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
-        # url = 'https://www.bbc.com/news/technology-56496783'
-        # crawl_one(url)
-
-        # get_urls()
-
         run()
 
