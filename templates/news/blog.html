@@ -29,7 +29,7 @@
                     <div class="recent-post">
                         <h4>Recent Post</h4>
                         <div class="recent-blog">
-                            {% for article in last_articles %}
+                            {% for article in page_obj %}
                             <a href="#" class="rb-item">
                                 <div class="rb-pic">
                                     <img src="{{ article.main_image.url }}" alt="">
@@ -55,7 +55,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    {% for article in last_articles %}
+                    {% for article in page_obj %}
                     <div class="col-lg-6 col-sm-6">
                         <div class="blog-item">
                             <div class="bi-pic">
