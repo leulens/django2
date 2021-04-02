@@ -26,8 +26,12 @@ from news import views
 
 urlpatterns = [
     path('', views.index_hendler, name='homepage'),
+
     path('blog/', views.blog_hendler, name='blog'),
+    path('blog/page/<number>/', views.blog_hendler, name='blog_pager'),
+
     path('<cat_slug>', views.blog_hendler, name='category'),
+    path('<cat_slug>/page/<number>/', views.blog_hendler, name='category_pager'),
 
     path('post/<post_slug>', views.blog_details_hendler, name='page'),
 
