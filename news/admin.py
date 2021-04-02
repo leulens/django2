@@ -15,9 +15,9 @@ def count_words(modeladmin, request, queryset):
 
 count_words.short_description = "Count words in article"
 
+
 class CommentArticleInLine(admin.TabularInline):
     model = Comment
-
 
 
 class ArticleAdmin(SummernoteModelAdmin):
@@ -34,7 +34,6 @@ class ArticleAdmin(SummernoteModelAdmin):
             '<img src="{}" width="100">',
             object.main_image.url
         )
-
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'in_menu', 'order', 'articles_count')

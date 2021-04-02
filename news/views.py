@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Count
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Article, Category
@@ -7,9 +8,11 @@ from .models import Article, Category
 def index_hendler(request):
     last_articles = Article.objects.all().order_by(
         '-pub_date')[:3].prefetch_related('categories')
-    context = {'last_articles': last_articles,
+    context = {
+        'last_articles': last_articles,
     }
     return render(request, 'news/index.html', context)
+
 
 
 def blog_hendler(request, **kwargs):
@@ -30,7 +33,6 @@ def blog_hendler(request, **kwargs):
     return render(request, 'news/blog.html', context)
 
 
-
 # отдельная страница блога: blog-details
 def blog_details_hendler(request, post_slug):
     main_article = Article.objects.get(slug=post_slug)
@@ -38,7 +40,6 @@ def blog_details_hendler(request, post_slug):
         prev_article = Article.objects.get(id = main_article.id - 1)
     except:
         prev_article = None
-
     try:
         next_article = Article.objects.get(id = main_article.id + 1)
     except:

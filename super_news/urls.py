@@ -28,6 +28,7 @@ urlpatterns = [
     path('', views.index_hendler, name='homepage'),
     path('blog/', views.blog_hendler, name='blog'),
     path('<cat_slug>', views.blog_hendler, name='category'),
+
     path('post/<post_slug>', views.blog_details_hendler, name='page'),
 
     path('contact/', views.contact_hendler, name='contact'),
