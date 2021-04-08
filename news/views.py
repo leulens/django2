@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+
 from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
 
