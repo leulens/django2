@@ -82,10 +82,10 @@
                             <p>{{ article.author.bio }}</p>
                         </div>
                     </div>
+                    {% if comments %}
+                    <h4>{{ comments.count }} Comments</h4>
 
-                    <h4>{{ article.comments.all.count }} Comments</h4>
-
-                    {% for comment in article.comments.all %}
+                    {% for comment in comments %}
                     <div class="posted-by">
                         <div class="pb-text">
                             <span>
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     {% endfor %}
-
+                    {% endif %}
                     <div class="leave-comment">
                         <h4>Leave A Comment</h4>
                         {% if form.non_field_errors %}

@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="rb-text">
                                     <h6>{{ article.name }}</h6>
-                                    <p>{{ article.categories.first.name }}</p>
+                                    <p>{{ article.categories.all.0.name }}</p>
                                 </div>
                             </a>
                             {% endfor %}
@@ -65,7 +65,7 @@
                                 <a href="{% url 'page' article.slug %}">
                                     <h4>{{ article.name }}</h4>
                                 </a>
-                                <p>{{ article.categories.first.name }} <span>- {{ article.pub_date }}</span></p>
+                                <p>{{ article.categories.all.0.name }} <span>- {{ article.pub_date }}</span></p>
                             </div>
                         </div>
                     </div>
