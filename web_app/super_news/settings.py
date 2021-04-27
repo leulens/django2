@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'm@ue7p#3%9drfns#v576@#zm%*kt@a_&j_j6&f_ajcgsv6qv-('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', False)
 
 # ALLOWED_HOSTS = ['127.0.0.1', '188.166.88.90']
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
@@ -153,6 +153,3 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-# from .settings_local import *
