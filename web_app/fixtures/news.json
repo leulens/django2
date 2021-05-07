@@ -50,33 +50,6 @@
     }
 },
 {
-    "model": "news.author",
-    "pk": 1,
-    "fields": {
-        "name": "Anna",
-        "avatar": "avatars/an.png",
-        "bio": "Bla bla bla"
-    }
-},
-{
-    "model": "news.author",
-    "pk": 2,
-    "fields": {
-        "name": "Enokentiy",
-        "avatar": "avatars/Гоша.jpg",
-        "bio": "bla bla"
-    }
-},
-{
-    "model": "news.author",
-    "pk": 3,
-    "fields": {
-        "name": "BBC News",
-        "avatar": "avatars/BBC.png",
-        "bio": "BBC News is impartial and independent, and every day BBC create distinctive, world-class programmes and content which inform, educate and entertain millions of people in the UK and around the world."
-    }
-},
-{
     "model": "news.article",
     "pk": 49,
     "fields": {
@@ -87,7 +60,7 @@
         "short_description": "A ransomware attack on multiple schools has left 37,000 pupils unable to access their email. The Harris Federation, which runs 50 primary and secondary academies in and around London, said it had temporarily disabled email while it deals with the cyber-attack.",
         "main_image": "images/school-cyber-attack-affects-40000-pupils-email.jpg",
         "pub_date": "2021-03-30T10:22:52.478",
-        "author": 3,
+        "author": 1,
         "categories": [
             18,
             20,
@@ -106,7 +79,7 @@
         "short_description": "By James Clayton\nNorth America technology reporter Anyone with a smartphone that uses facial recognition will know it does not really work with a mask on. That can be frustrating - but although masks have undoubtedly thwarted the facial-recognition industry, the technology has also adapted.",
         "main_image": "images/facial-recognition-beats-the-covid-mask-challenge.jpg",
         "pub_date": "2021-03-30T10:22:52.744",
-        "author": 3,
+        "author": 1,
         "categories": [
             124
         ]
@@ -123,7 +96,7 @@
         "short_description": "By Michael Winrow\r\nTechnology of Business reporter For Hannah Blair, choosing which A-levels to take came with an added complication. Hannah attended an all-girls' school that didn't offer the computing and programming course she wished to take, despite the joint all-boys' school offering the course.",
         "main_image": "images/learning-to-code-will-seriously-change-your-life.jpg",
         "pub_date": "2021-03-30T10:22:52.767",
-        "author": 3,
+        "author": 1,
         "categories": [
             14
         ]

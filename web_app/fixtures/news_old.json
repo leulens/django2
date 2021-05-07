@@ -1,0 +1,236 @@
+[
+{
+    "model": "news.category",
+    "pk": 14,
+    "fields": {
+        "name": "Coronavirus pandemic",
+        "slug": "coronavirus-pandemic",
+        "in_menu": true,
+        "order": 1
+    }
+},
+{
+    "model": "news.category",
+    "pk": 18,
+    "fields": {
+        "name": "Cyber-security",
+        "slug": "cyber-security",
+        "in_menu": true,
+        "order": 1
+    }
+},
+{
+    "model": "news.category",
+    "pk": 20,
+    "fields": {
+        "name": "Cyber-attacks",
+        "slug": "cyber-attacks",
+        "in_menu": true,
+        "order": 1
+    }
+},
+{
+    "model": "news.category",
+    "pk": 123,
+    "fields": {
+        "name": "Schools",
+        "slug": "schools",
+        "in_menu": true,
+        "order": 1
+    }
+},
+{
+    "model": "news.category",
+    "pk": 124,
+    "fields": {
+        "name": "Facial recognition",
+        "slug": "facial-recognition",
+        "in_menu": true,
+        "order": 1
+    }
+},
+{
+    "model": "news.author",
+    "pk": 1,
+    "fields": {
+        "name": "Anna",
+        "avatar": "avatars/an.png",
+        "bio": "Bla bla bla"
+    }
+},
+{
+    "model": "news.author",
+    "pk": 2,
+    "fields": {
+        "name": "Enokentiy",
+        "avatar": "avatars/Гоша.jpg",
+        "bio": "bla bla"
+    }
+},
+{
+    "model": "news.author",
+    "pk": 3,
+    "fields": {
+        "name": "BBC News",
+        "avatar": "avatars/BBC.png",
+        "bio": "BBC News is impartial and independent, and every day BBC create distinctive, world-class programmes and content which inform, educate and entertain millions of people in the UK and around the world."
+    }
+},
+{
+    "model": "news.article",
+    "pk": 49,
+    "fields": {
+        "name": "School cyber-attack affects 40,000 pupils’ email",
+        "slug": "school-cyber-attack-affects-40000-pupils-email",
+        "content": "<p>A ransomware attack on multiple schools has left 37,000 pupils unable to access their email.<p><p>The Harris Federation, which runs 50 primary and secondary academies in and around London, said it had temporarily disabled email while it deals with the cyber-attack.<p><p>Data on the systems has been encrypted and hidden by the attackers.<p><p>Last week, the National Cyber Security Centre (NCSC) issued a warning that hackers are targeting schools.<p><p>“We are at least the fourth multi-academy trust to have been targeted in March,” a statement on the Harris Federation website said.<p><p>“This is a highly sophisticated attack that will have a significant impact on our academies but it will take time to uncover the exact details of what has or has not happened, and to resolve.<p><p>“As a precaution, we have temporarily disabled our email system.”<p><p>Any devices which the Harris Federation have given to pupils have also been disabled, the statement added.<p><p>However, schools have recently returned to in-person learning as part of the easing of lockdown restrictions - meaning students can still attend classes.<p><p>Harris Federation schools break up for Easter later this week.<p><p>Its statement did not detail what information or data has been compromised, and it has not yet responded to the BBC's request for comment.<p><p>The trust is working with “a specialised firm of cyber-technology consultants”, the National Crime Agency and the NCSC to resolve the issues.<p><p>The NCSC said it has \"recently alerted the education sector to the significant threat posed by ransomware attacks\" and urged schools and colleges to follow its advice to protect themselves online.<p><p>It used to be the case that ransomware groups concentrated their efforts on large multinational companies.<p><p>Big corporate budgets and potential business interruption mean large ransom payouts.<p><p>Publicly funded schools and colleges are therefore an odd and particularly cruel target.<p><p>One hacker group recently posted part of their negotiation conversation with another unnamed institution on the dark net.<p><p>It made for grim reading, and once again showed me how ruthless they are.<p><p>At one stage, when the hackers demanded $15m, the school wrote: \"Sir, please, this is NOT a business with profits. We operate much like a charity operates. This is a state-funded school, our salaries are paid for by taxing the people that live in the state. We have no idea how you think we can afford this.\"<p><p>This wave of attacks in the US and UK show the hackers have no regard for where the money comes from or who is affected.<p><p>UK universities lose data to ransomware attack<p><p>Ransomware halts classes for 115,000 pupils<p><p>Cyber attack targets school exam files<p>",
+        "content_words_count": null,
+        "short_description": "A ransomware attack on multiple schools has left 37,000 pupils unable to access their email. The Harris Federation, which runs 50 primary and secondary academies in and around London, said it had temporarily disabled email while it deals with the cyber-attack.",
+        "main_image": "images/school-cyber-attack-affects-40000-pupils-email.jpg",
+        "pub_date": "2021-03-30T10:22:52.478",
+        "author": 3,
+        "categories": [
+            18,
+            20,
+            123
+        ]
+    }
+},
+{
+    "model": "news.article",
+    "pk": 50,
+    "fields": {
+        "name": "Facial recognition beats the Covid-mask challenge",
+        "slug": "facial-recognition-beats-the-covid-mask-challenge",
+        "content": "<p>By James Clayton\nNorth America technology reporter<p><p>Anyone with a smartphone that uses facial recognition will know it does not really work with a mask on.<p><p>That can be frustrating - but although masks have undoubtedly thwarted the facial-recognition industry, the technology has also adapted.<p><p>It may sound strange but wearing a mask does not necessarily stop a computer from identifying someone.<p><p>And there are even examples of the pandemic being used as an excuse to use facial recognition.<p><p>Last year, as people began to increasingly wear masks around the world, the prevailing view was it represented a huge challenge to facial recognition.<p><p>It seemed obvious - algorithms designed to analyse faces would be less accurate if part of the face was concealed.<p><p>And studies backed this up.<p><p>The National Institute of Standards and Technology (NIST) tested 89 commercial facial-recognition algorithms - and found a 5-50% error rate in matching faces with digitally applied masks to photos of the same person.<p><p>But some facial-recognition technologies still work pretty well on those wearing a mask.<p><p>In January, a US Department of Homeland Security \"controlled-scenario test\" found one with a 96% success rate - although the results \"varied greatly between systems\".<p><p>\"Based on these results\" the department said, \"organisations that need to perform photo ID checks could potentially allow individuals to keep their masks on, thereby reducing the risk of Covid-19 infection.\"<p><p>And although some police forces are using facial recognition less - London's Metropolitan Police, for example, has not conducted a facial-recognition test for over a year - it is still being used, even, reportedly, at Black Lives Matter protests last summer.<p><p>\"Even if the use of this technology is temporarily interrupted... that doesn't obviate the threat that this technology poses both in the short and the long term,\" Michael Kleinman, from Amnesty International, told BBC News.<p><p>\"Anyone walking in front of a camera where police departments are running facial recognition - their face can be captured and they can be identified. That's Orwellian.\"<p><p>In the private sector, it is harder to tell whether the use of facial recognition has decreased over the past year - there is no directory, no list of when and where it is used.<p><p>But on Monday, it was announced Disney World was to trial facial-recognition technology for a month.<p><p>Its system takes an image of a customer's face and converts it into a unique number, which is associated with the form of admission used for entry into the theme park.<p><p>The idea is to cut waiting times, with Disney saying it wants a more \"touchless experience\".<p><p>FIRST LOOK: Going Through New Facial Recognition Park Entry Procedure at Walt Disney Worldhttps://t.co/nLTFTHkntv pic.twitter.com/JBlrEcqzeg<p><p>And crucially, the technology does not require guests to take off their masks.<p><p>Even before the pandemic, research had been under way on how facial recognition could work with masks.<p><p>In Japan, NEC had been working on a system for people who wear masks because of allergies.<p><p>And in January, it announced one it said was 99.9% accurate.<p><p>It works out whether someone is wearing a mask and then focuses on the uncovered areas, such as the eyes and forehead.<p><p>And the company wants to sell it for security checks in office buildings and other facilities.<p><p>\"Touchless verification has become extremely important due to the impact of the coronavirus,\" NEC told Reuters.<p><p>So once again, the pandemic, rather than hindering facial recognition, is being used as a reason to use it.<p><p>\"Early on in the pandemic, we thought one of the very few silver linings could be the decline in facial-recognition technologies - but we've absolutely found that it's the opposite,\" Ella Jakubowska a campaign officer at pressure group European Digital Rights, says.<p><p>\"The pandemic has unfortunately provided cover for companies to push out to what are effectively mass-surveillance infrastructures, under the guise of public health.<p><p>\"A lot of companies have seen it almost [as a] challenge to develop technologies that can even more incisively identify people in public.\"<p><p>It has also been announced facial recognition will be used at the Olympics, due to start this July in Japan.<p><p>It is not yet clear what for - but there will be strict rules restricting shouting and singing, and foreign visitors will be unable to attend.<p><p>Already, the technology had been used to check whether people were wearing masks at sporting events, the Japan Times reported.<p><p>Facebook too is reportedly considering building facial recognition into its upcoming smart glasses, despite privacy activists' concerns it could be used by stalkers.<p><p>Facial recognition remains hugely controversial - and those controversies will remain, whether or not masks are being worn.<p><p>Facial recognition identifies people wearing masks<p><p>Emotion-detecting tech 'must be restricted by law'<p>",
+        "content_words_count": null,
+        "short_description": "By James Clayton\nNorth America technology reporter Anyone with a smartphone that uses facial recognition will know it does not really work with a mask on. That can be frustrating - but although masks have undoubtedly thwarted the facial-recognition industry, the technology has also adapted.",
+        "main_image": "images/facial-recognition-beats-the-covid-mask-challenge.jpg",
+        "pub_date": "2021-03-30T10:22:52.744",
+        "author": 3,
+        "categories": [
+            124
+        ]
+    }
+},
+{
+    "model": "news.article",
+    "pk": 51,
+    "fields": {
+        "name": "Learning to code 'will seriously change your life'",
+        "slug": "learning-to-code-will-seriously-change-your-life",
+        "content": "<p>By Michael Winrow\r\nTechnology of Business reporter</p><p></p><p>For Hannah Blair, choosing which A-levels to take came with an added complication.</p><p></p><p>Hannah attended an all-girls' school that didn't offer the computing and programming course she wished to take, despite the joint all-boys' school offering the course.</p><p></p><p>\"At the girls' school there was IT whereas the boys' school had an actual computing course, even though they were under the same umbrella, so I moved over to the boys' school to do it,\" Hannah says.</p><p></p><p>Her determination paid off and she graduated with a degree in computer science from the University of Surrey in 2018.</p><p></p><p>Hannah went on to secure a place on the Deutsche Bank graduate scheme, and has since worked with start-ups as a freelance developer and currently as a senior developer at virtual event platform Hopin.</p><p></p><p>It was a shrewd career choice as software development is an industry with a lot of opportunities.</p><p></p><p>For example, the US Bureau of Labor Statistics is forecasting a job growth rate of 22% for developers between 2019 and 2029, compared with 4% for other occupations.</p><p></p><p>And the roles are well paid. According to salary comparison website PayScale, the average developer salary is around 74,000.</p><p></p><p>Carl Mungazi studied journalism at university, and worked as a local journalist in Luton for four years before making the switch to developer in 2016.</p><p></p><p>His route into coding initially came from his desire to build a news aggregator for the local area, something he'd seen national publications build.</p><p></p><p>\"I wanted to basically find a way of being able to track the news being published in Luton,\" Carl says.</p><p></p><p>A developer friend helped him build the back end - the technology behind the scenes holding everything together - and Carl taught himself to use Javascript - a programming language popular for building websites.</p><p></p><p>It also helped kick-start a career change when the journalism project eventually fizzled out.</p><p></p><p>More Technology of Business</p><p></p><p>Choosing which computer language to learn really depends on what you want to do.</p><p></p><p>Python is a powerful, general purpose language and is often the first language taught to undergraduates on computer science courses.</p><p></p><p>It is widely used in business - YouTube, for example, is largely written in Python.</p><p></p><p>Ruby is another versatile language, popular with start-ups.</p><p></p><p>Whichever language a budding programmer opts for, there are vast resources online to support those teaching themselves. In his case, Carl says freecodecamp.org was particularly helpful.</p><p></p><p>Attending a boot camp is another popular option for career changers. Many of these have sprung up in recent years, offering intensive courses designed to equip participants with the skills needed to get that crucial first job.</p><p></p><p>Brenden Thornton chose this route, enrolling on a course offered by boot camp Flatiron School, whilst shifting careers away from being an National Basketball Association (NBA) cameraman.</p><p></p><p>\"One big advantage of going to a boot camp is having a set curriculum planned out for you. I didn't have to do any guesswork when it came to deciding what technologies to learn and how I was going to teach them to myself,\" he explains.</p><p></p><p>The support that comes with attending such boot camps was also key in his decision.</p><p></p><p>\"They really take the time to build a solid support team around you, not only through job opportunities, but also through career coaches who help you navigate the job search process.\"</p><p></p><p>One drawback of boot camps is that they can demand a lot of time and, for many, be prohibitively expensive. Many courses exceed 10,000.</p><p></p><p>A partial scholarship helped ease some of the financial burden for Brenden, but he still had a gruelling schedule.</p><p></p><p>During the boot camp his Monday to Friday routine involved getting up at 05:00 to drive for Uber and Lyft until 09:00. He would eat and study until 16:00 and then drive again until 21:00.</p><p></p><p>Regardless of the path taken into coding, ensuring that so-called softer skills are not neglected is essential.</p><p></p><p>\"The skills that employers look for often are more than just the technologies,\" according to Barry Cranford, managing director of recruitment firm RecWorks.</p><p></p><p>\"The main thing that really makes a difference is whether they can do it as part of a team.\"</p><p></p><p>For Hannah Blair, attending hackathons at university were a useful way to improve these transferable skills, as well as connect with others.</p><p></p><p>\"Even if you're not heavily involved in the development of the product itself that you pitch at the end, there are just so many skills that you can take away,\" she says.</p><p></p><p>Having a public profile to highlight your work can also help when applying for roles.</p><p></p><p>Online platform Github is particularly popular among employers. \"It's like a portfolio for photography, you can dip into it and see what people have done,\" says Barry Cranford.</p><p></p><p>Finding a mentor to support you is another area that can provide a boost, he says, and could be a \"secret weapon\" for your career.</p><p></p><p>As with many industries, networking can also help build those first crucial contacts.</p><p></p><p>\"Attending any meet-ups can greatly increase your odds of landing a job,\" Brenden Thornton says. \"Network, network, network.\"</p><p></p><p>The challenges of getting that first job are not to be underestimated, however, particularly for career changers.</p><p></p><p>For Carl Mungazi it took 14 months to land his first role, as he came up against a problem familiar to many jobseekers.</p><p></p><p>\"One of the interviewers said to me that I had promise but they wanted me to get more experience.\"</p><p></p><p>Ultimately, whatever path taken into the industry, demonstrating a clear interest and passion for coding and programming must shine through.</p><p></p><p>\"It's a very challenging process that will really push your mental toughness, but if you're able to push through then it will seriously change your life,\" says Brenden.</p><p></p>",
+        "content_words_count": null,
+        "short_description": "By Michael Winrow\r\nTechnology of Business reporter For Hannah Blair, choosing which A-levels to take came with an added complication. Hannah attended an all-girls' school that didn't offer the computing and programming course she wished to take, despite the joint all-boys' school offering the course.",
+        "main_image": "images/learning-to-code-will-seriously-change-your-life.jpg",
+        "pub_date": "2021-03-30T10:22:52.767",
+        "author": 3,
+        "categories": [
+            14
+        ]
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 1,
+    "fields": {
+        "name": "Serg",
+        "email": "serg@yandex.ru",
+        "website": "www.site.ru",
+        "comment": "It's 1 comment",
+        "article": 51,
+        "pub_date": "2021-04-01T11:52:26.413",
+        "is_moderated": true
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 2,
+    "fields": {
+        "name": "Anna",
+        "email": "an@yandex.ru",
+        "website": "www.site.1ru",
+        "comment": "It's 2 comment",
+        "article": 51,
+        "pub_date": "2021-04-01T11:52:26.413",
+        "is_moderated": true
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 6,
+    "fields": {
+        "name": "Vanya",
+        "email": "etst@uy.ru",
+        "website": "https://sfsfsfs.ru",
+        "comment": "jhkljsjdhf kljdshfl kshdlafhasldfkj haskdfjh sfs",
+        "article": 51,
+        "pub_date": "2021-04-03T18:34:59.339",
+        "is_moderated": true
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 14,
+    "fields": {
+        "name": "lkoljlkj",
+        "email": "sdfsf@uh.eu",
+        "website": "https://yandex.ru/",
+        "comment": "sdfasdf sfdasdfa safsdf",
+        "article": 50,
+        "pub_date": "2021-04-08T11:35:10.319",
+        "is_moderated": false
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 16,
+    "fields": {
+        "name": "Miha",
+        "email": "miha@ya.ru",
+        "website": "https://yandex.ru/",
+        "comment": "Privetttt!",
+        "article": 49,
+        "pub_date": "2021-04-13T05:44:13.599",
+        "is_moderated": true
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 17,
+    "fields": {
+        "name": "Marina",
+        "email": "test@ya.ru",
+        "website": "http://yandex.ru",
+        "comment": "Mi-mi-mi",
+        "article": 49,
+        "pub_date": "2021-04-13T05:44:48.664",
+        "is_moderated": true
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 18,
+    "fields": {
+        "name": "Mira",
+        "email": "mir@ya.ru",
+        "website": "https://yandex.ru/",
+        "comment": "trololo",
+        "article": 49,
+        "pub_date": "2021-04-13T05:57:01.518",
+        "is_moderated": true
+    }
+},
+{
+    "model": "news.comment",
+    "pk": 19,
+    "fields": {
+        "name": "Vitalic",
+        "email": "vi@ya.ru",
+        "website": "https://yandex.ru/",
+        "comment": "lkjdsfslkj sf lksjf sflks",
+        "article": 50,
+        "pub_date": "2021-04-13T07:08:03.704",
+        "is_moderated": true
+    }
+}
+]

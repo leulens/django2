@@ -42,16 +42,21 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Application definition
 
 INSTALLED_APPS = [
-    'grappelli',
+    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'news.apps.NewsConfig',
     'debug_toolbar',
     'django_summernote',
+    'authors',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
@@ -84,19 +89,36 @@ TEMPLATES = [
     },
 ]
 
+SITE_ID = 1
+
 WSGI_APPLICATION = 'super_news.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'kontur.buhgalteria@gmail.com'
+EMAIL_HOST_PASSWORD = '123konturprofi!'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
+ANONYMOUS_USER_NAME = 'AnonymousAuthor'
+
+AUTH_PROFILE_MODULE = 'authors.Author'
+
+
+USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+
+USERENA_DISABLE_PROFILE_LIST = True
+
+USERENA_PROFILE_DETAIL_TEMPLATE = 'userena/profile_detail.html'
 
 DATABASES = {
     'default': {
