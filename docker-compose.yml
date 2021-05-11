@@ -9,7 +9,6 @@ services:
     volumes:
       - ./web_app/static_root:/code/static_root
       - ./web_app/static:/code/static
-#      - ./web_app/static/grappelli:/code/static/grappelli
       - ./web_app/media:/code/media
     depends_on:
       - web
