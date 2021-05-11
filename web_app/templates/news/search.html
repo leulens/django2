@@ -1,0 +1,84 @@
+{% extends 'news/base.html' %}
+
+{% block  content %}
+
+{% load static %}
+
+<!-- Blog Section Begin -->
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1">
+                <div class="blog-sidebar">
+                    <div class="blog-catagory">
+                        <h4>Categories</h4>
+                        <ul>
+                            {% for cat in menu_categories %}
+                            <li><a href="{% url 'category' cat.slug %}">{{ cat.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 order-1 order-lg-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            {% if search_articles %}
+                            <h3>Search Results for "{{ query }}"</h3>
+                            {% else %}
+                            <h3>No search results found</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% for article in page_obj %}
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="blog-item">
+                            <div class="bi-pic">
+                                <img src="{{ article.main_image.url }}" alt="">
+                            </div>
+                            <div class="bi-text">
+                                <a href="{% url 'page' article.slug %}">
+                                    <h4>{{ article.name }}</h4>
+                                </a>
+                                <p>{{ article.categories.all.0.name }} <span>- {{ article.pub_date }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="col-lg-12">
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <div class="loading-more">
+                                <ul class="pagination">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a href="?q={{query}}&page={{page_obj.previous_page_number}}" class="page-link" aria-label="Previous">
+                                            <i class="ti-angle-left"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% for p in paginator.page_range %}
+                                     <li class="page-item">
+                                         <a href="?q={{query}}&page={{p}}" class="page-link">{{ p }}</a>
+                                     </li>
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a href="?q={{query}}&page={{page_obj.next_page_number}}" class="page-link" aria-label="Next">
+                                            <i class="ti-angle-right"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->
+
+{% endblock %}

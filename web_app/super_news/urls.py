@@ -35,6 +35,8 @@ urlpatterns = [
 
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('faq/', views.FaqView.as_view(), name='faq'),
+    path('search/', views.SearchView.as_view(), name='search'),
+
 
     path('robots.txt', views.RobotsView.as_view()),
 
