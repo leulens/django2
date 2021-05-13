@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'news.apps.NewsConfig',
     'debug_toolbar',
+    'django_elasticsearch_dsl',
     'django_summernote',
     'authors',
     'userena',
@@ -129,6 +130,12 @@ DATABASES = {
         'HOST': 'db',
         'PORT': '5432',
     }
+}
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'elasticsearch:9200'
+    },
 }
 
 # Password validation

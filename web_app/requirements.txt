@@ -35,4 +35,5 @@ zipp==3.4.0
 gunicorn==20.1.0
 django-grappelli==2.15.1
 django-userena-ce==6.0.1
+django-elasticsearch-dsl
 

@@ -4,6 +4,7 @@ from django.utils.translation import gettext as _
 from userena.models import UserenaBaseProfile
 
 
+
 class Author(UserenaBaseProfile):
     user = models.OneToOneField(
         User,
@@ -15,6 +16,3 @@ class Author(UserenaBaseProfile):
 
     avatar = models.ImageField(upload_to='avatars')
     bio = models.CharField(max_length=255)
-
-    def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
