@@ -1,0 +1,8 @@
+<div class="blog-tags">
+    <h4>Product Tags</h4>
+    <div class="tag-item">
+        {% for tag in tags_list %}
+        <a href="{% url 'tag' tag.slug %}">{{tag.name}}</a>
+        {% endfor %}
+    </div>
+</div>

@@ -35,7 +35,11 @@ DEBUG = os.getenv('DEBUG', False)
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 ALLOWED_HOSTS = ['*']
 
-INTERNAL_IPS = ['127.0.0.1']
+if DEBUG:
+    # `debug` is only True in templates if the vistor IP is in INTERNAL_IPS.
+    INTERNAL_IPS = type(str('c'), (), {'__contains__': lambda *a: True})()
+
+# INTERNAL_IPS = ['127.0.0.1']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -43,13 +47,14 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 INSTALLED_APPS = [
     # 'grappelli',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'news.apps.NewsConfig',
     'debug_toolbar',
     'django_elasticsearch_dsl',
@@ -84,7 +89,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'news.context_procesor.menu_categiries'
+                'news.context_procesor.menu_categiries',
+                'news.context_procesor.tags_linking'
             ],
         },
     },

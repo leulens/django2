@@ -18,17 +18,14 @@
                             {% endfor %}
                         </ul>
                     </div>
+                    {% include 'news/partials/tags_cloud.html' %}
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title">
-                            {% if page_obj %}
-                            <h3>Search Results for "{{ query }}"</h3>
-                            {% else %}
-                            <h3>No search results found</h3>
-                            {% endif %}
+                            <h1 class="like_h2">{{ object.name }}</h1>
                         </div>
                     </div>
                     {% for article in page_obj %}
@@ -47,31 +44,7 @@
                     </div>
                     {% endfor %}
                     <div class="col-lg-12">
-                        <nav class="blog-pagination justify-content-center d-flex">
-                            <div class="loading-more">
-                                <ul class="pagination">
-                                {% if page_obj.has_previous %}
-                                    <li class="page-item">
-                                        <a href="?q={{query}}&page={{page_obj.previous_page_number}}" class="page-link" aria-label="Previous">
-                                            <i class="ti-angle-left"></i>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                                {% for p in paginator.page_range %}
-                                     <li class="page-item">
-                                         <a href="?q={{query}}&page={{p}}" class="page-link">{{ p }}</a>
-                                     </li>
-                                {% endfor %}
-                                {% if page_obj.has_next %}
-                                    <li class="page-item">
-                                        <a href="?q={{query}}&page={{page_obj.next_page_number}}" class="page-link" aria-label="Next">
-                                            <i class="ti-angle-right"></i>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                                </ul>
-                            </div>
-                        </nav>
+                        {% include 'news/partials/pagination.html' %}
                     </div>
 
                 </div>
