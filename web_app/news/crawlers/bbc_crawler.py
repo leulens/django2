@@ -3,20 +3,19 @@ from datetime import datetime
 
 from slugify import slugify
 from requests_html import HTMLSession
-
+from cache_memoize import cache_memoize
 
 from concurrent.futures import ThreadPoolExecutor
 
 from news.models import Article, Author, Category
 
 
-AUTHOR = None
+@cache_memoize(3600)
+def get_authors(a_id=3):
+    return Author.objects.get(id=3)
 
 def crawl_one(url):
-    global AUTHOR
-
-    if not AUTHOR:
-        AUTHOR = Author.objects.get(id=3)
+    author = get_authors()
 
     try:
         with HTMLSession() as session:
@@ -67,7 +66,7 @@ def crawl_one(url):
             'short_description': short_description.strip(),
             'main_image': img_path,
             'pub_date': pub_date,
-            'author': AUTHOR,
+            'author': author,
         }
 
         article, created = Article.objects.get_or_create(**article)

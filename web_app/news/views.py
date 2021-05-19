@@ -2,7 +2,9 @@ from slugify import slugify
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import FormMixin
-from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
 
 
 from django.views.generic import TemplateView, ListView, DetailView
@@ -50,7 +52,7 @@ class CategoryListView(ListView, SingleObjectMixin):
         self.queryset = self.object.article_set.all().prefetch_related('categories')
         return super().get_queryset()
 
-
+@method_decorator(csrf_protect, name='dispatch')
 class PageDetailView(FormMixin, DetailView):
     template_name = 'news/blog-details.html'
     model = Article
