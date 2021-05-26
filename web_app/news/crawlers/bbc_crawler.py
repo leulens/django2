@@ -12,11 +12,10 @@ from news.models import Article, Author, Category
 
 @cache_memoize(3600)
 def get_authors(a_id=3):
-    return Author.objects.get(id=3)
+    return Author.objects.get(id=a_id)
 
 def crawl_one(url):
     author = get_authors()
-
     try:
         with HTMLSession() as session:
             response = session.get(url)
@@ -102,10 +101,15 @@ def get_fresh_news():
 
     return fresh_news
 
-def run():
+def run(task=None):
     fresh_news = get_fresh_news()
     with ThreadPoolExecutor(max_workers=10) as executor:
         executor.map(crawl_one, fresh_news)
+
+    if task:
+        task.status = 'successfully compleated'
+        task.done = True
+        task.save()
 
 if __name__ == '__main__':
     run()

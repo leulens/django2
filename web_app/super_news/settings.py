@@ -62,7 +62,10 @@ INSTALLED_APPS = [
     'authors',
     'userena',
     'guardian',
+    'task',
     'easy_thumbnails',
+    'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +105,17 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR, "django_cache")
     }
 }
+
+
+CELERY_BROKER_URL = 'redis://redis_q:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://redis_q:6379/1'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
 
 SITE_ID = 1
 
