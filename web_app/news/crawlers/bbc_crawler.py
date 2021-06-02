@@ -1,4 +1,5 @@
 import sys
+import logging
 from datetime import datetime
 
 from slugify import slugify
@@ -9,6 +10,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 from news.models import Article, Author, Category
 
+
+logger = logging.getLogger('celery')
 
 @cache_memoize(3600)
 def get_authors(a_id=3):
@@ -74,9 +77,11 @@ def crawl_one(url):
             cat, created = Category.objects.get_or_create(**category)
             article.categories.add(cat)
 
+        logger.debug(f" Try to parser {url}")
         print(article)
 
     except Exception as e:
+        logger.debug(f' Try to parse {url}')
         print(f'[{url}]', e, type(e), sys.exc_info()[-1].tb_lineno)
 
 

@@ -1,3 +1,4 @@
+import logging
 from slugify import slugify
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic.detail import SingleObjectMixin
@@ -17,6 +18,11 @@ from .forms import CommentForm
 from .documents import ArticleDocument
 
 
+logger = logging.getLogger('custom')
+
+loggers = [logging.getLogger(name) for name in logging.root.manager.loggerDict]
+
+logger.info(loggers)
 
 class IndexView(TemplateView):
     template_name = 'news/index.html'
@@ -46,6 +52,7 @@ class CategoryListView(ListView, SingleObjectMixin):
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object(queryset=Category.objects.all())
+        logger.debug(locals())
         return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -72,6 +79,7 @@ class PageDetailView(FormMixin, DetailView):
         context['prev_article'] = prev_article
         context['next_article'] = next_article
         context['comments'] = self.object.comments.filter(is_moderated=True)
+        logger.debug(context)
         return context
 
     def get_success_url(self):

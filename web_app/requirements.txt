@@ -5,7 +5,7 @@ beautifulsoup4==4.9.3
 billiard==3.6.4.0
 bs4==0.0.1
 cached-property==1.5.2
-celery==5.1.0
+celery==5.0.5
 certifi==2020.12.5
 chardet==4.0.0
 click==7.1.2
@@ -15,14 +15,13 @@ click-repl==0.1.6
 cssselect==1.1.0
 Django==3.1.7
 django-cache-memoize==0.1.9
-django-celery-beat==2.2.0
-django-celery-results==2.0.1
+django-celery-beat
+django-celery-results
 django-debug-toolbar==3.2
 django-elasticsearch-dsl==7.2.0
 django-grappelli==2.15.1
 django-guardian==2.3.0
 django-summernote==0.8.11.6
-django-timezone-field==4.1.2
 django-userena-ce==6.0.1
 easy-thumbnails==2.7.1
 elasticsearch==7.12.1
@@ -59,6 +58,7 @@ vine==5.0.0
 w3lib==1.22.0
 websockets==8.1
 zipp==3.4.0
+
 
 
 

@@ -32,6 +32,7 @@ services:
       - redis_q
     restart: always
 
+
   db:
     image: postgres
     env_file: ./my.env

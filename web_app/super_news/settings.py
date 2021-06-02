@@ -148,6 +148,13 @@ USERENA_DISABLE_PROFILE_LIST = True
 
 USERENA_PROFILE_DETAIL_TEMPLATE = 'userena/profile_detail.html'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -158,6 +165,33 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'my-custom': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        }
+    },
+    'handlers': {
+        'debug-to-file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/code/logs/django-debug.log',
+            'formatter': 'my-custom'
+        }
+    },
+    'loggers': {
+        'custom': {
+            'handlers': ['debug-to-file'],
+            'level': 'INFO'
+        }
+    }
+}
+
+
 
 ELASTICSEARCH_DSL = {
     'default': {
