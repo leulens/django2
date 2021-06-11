@@ -1,8 +1,8 @@
+from requests_html import HTMLSession
+
 from django.test import TestCase
 from news.crawlers.bbc_crawler import run
 from news.models import Article
-
-from requests_html import HTMLSession
 
 
 class AnimalTestCase(TestCase):
