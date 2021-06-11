@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import sys
 
 from pathlib import Path
 
@@ -165,6 +166,13 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test_db.sqlite'
+    }
 
 LOGGING = {
     'version': 1,
